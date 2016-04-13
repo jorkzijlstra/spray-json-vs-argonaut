@@ -8,15 +8,18 @@ trait JsonParserSpec extends WordSpec with Matchers {
 
   val jsonStr = loadJson()
 
+  val parseTimes = 5
+
   def go(): Unit =
-    for (_ <- 1 to 1000) {
+    for (_ <- 1 to parseTimes) {
       parser.parseToString(jsonStr)
     }
 
   parserName should { //{1
-    "parse it 1,000 times (01)" in { //{2
+    "parse it " + parseTimes + " times (01)" in { //{2
       go()
     } //}2
+    /*
     "parse it 1,000 times (02)" in { //{2
       go()
     } //}2
@@ -74,5 +77,6 @@ trait JsonParserSpec extends WordSpec with Matchers {
     "parse it 1,000 times (20)" in { //{2
       go()
     } //}2
+    */
   } //}1
 }
